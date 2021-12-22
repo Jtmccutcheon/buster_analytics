@@ -42,7 +42,7 @@ export const BusterPieA = ({ data }) => {
       <text
         x={x}
         y={y}
-        fill="white"
+        fill="black"
         textAnchor="middle"
         dominantBaseline="central"
         style={{ display: 'flex', flexDirection: 'column' }}

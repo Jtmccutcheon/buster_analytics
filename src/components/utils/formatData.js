@@ -1,5 +1,11 @@
 import { colors } from './colors';
 
+const getRandomPastelColor = () => {
+  const hue = Math.floor(Math.random() * 360);
+  const randomColor = `hsl(${hue}, 70%, 80%)`;
+  return randomColor;
+};
+
 export const formattedData = data => {
   if (!data) return [];
   if (data.busters?.length) {
@@ -7,7 +13,7 @@ export const formattedData = data => {
       return {
         ...b,
         wins: b?.datesWon?.length,
-        fill: colors[index],
+        fill: getRandomPastelColor(),
         children: [{ name: b?.username, wins: b?.datesWon?.length }],
       };
     });
@@ -18,7 +24,7 @@ export const formattedData = data => {
       return {
         ...b,
         wins: b?.datesWon?.length,
-        fill: colors[index],
+        fill: getRandomPastelColor(),
         children: [{ name: b.username, wins: b?.datesWon?.length }],
       };
     });
@@ -29,7 +35,7 @@ export const formattedData = data => {
       return {
         ...b,
         wins: b?.datesWon?.length,
-        fill: colors[index],
+        fill: getRandomPastelColor(),
         children: [{ name: b.username, wins: b?.datesWon?.length }],
       };
     });
@@ -40,7 +46,7 @@ export const formattedData = data => {
       return {
         ...b,
         wins: b?.datesWon?.length,
-        fill: colors[index],
+        fill: getRandomPastelColor(),
         children: [{ name: b.username, wins: b?.datesWon?.length }],
       };
     });

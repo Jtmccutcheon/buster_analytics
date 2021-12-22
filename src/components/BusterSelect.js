@@ -18,6 +18,7 @@ export const BusterSelect = ({
 
   return (
     <select
+      value={'select a buster'}
       onChange={e => {
         if (e.target.value === 'select a buster') return;
         return dispatchUserSelectedBusters({
@@ -26,7 +27,9 @@ export const BusterSelect = ({
         });
       }}
     >
-      <option>select a buster</option>
+      <option value={'select a buster'} disabled>
+        select a buster
+      </option>
       {data.busters
         .filter(b =>
           userSelectedBusters.length > 0
