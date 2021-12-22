@@ -76,7 +76,11 @@ export const Graphs = () => {
     var: { variables: { usernames: userSelectedBusters, startDate, endDate } },
   };
 
-  const { loading, error, data } = useQuery(query.string, query.var);
+  const {
+    // loading,
+    // error,
+    data,
+  } = useQuery(query.string, query.var);
 
   const onClear = () => {
     setEndDate('');
