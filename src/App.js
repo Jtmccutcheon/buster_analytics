@@ -8,7 +8,6 @@ export default function App() {
     url: 'https://busterq.herokuapp.com/graphql',
   });
 
-  client.setHeader('Access-Control-Allow-Origin', '*');
   return (
     <div className="App">
       <ClientContext.Provider value={client}>
