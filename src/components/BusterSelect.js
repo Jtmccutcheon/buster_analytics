@@ -30,10 +30,17 @@ export const BusterSelect = ({
       {data.busters
         .filter(b =>
           userSelectedBusters.length > 0
-            ? !userSelectedBusters.includes(b.username)
+            ? !userSelectedBusters.includes(JSON.stringify(b))
             : [],
         )
-        .map((b, index) => b && <option key={index}>{b.username}</option>)}
+        .map(
+          (b, index) =>
+            b && (
+              <option value={JSON.stringify(b)} key={index}>
+                {b.username}
+              </option>
+            ),
+        )}
     </select>
   );
 };

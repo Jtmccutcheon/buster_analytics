@@ -7,6 +7,8 @@ export const BusterUsernames = ({
       style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}
     >
       {userSelectedBusters.map((u, index) => {
+        const { username, avatarUrl } = JSON.parse(u);
+        console.log(username, avatarUrl);
         return (
           <div
             key={index}
@@ -22,10 +24,20 @@ export const BusterUsernames = ({
               maxHeight: '32px',
             }}
           >
-            <div>{u}</div>{' '}
+            <img
+              alt="buster"
+              style={{
+                height: '20px',
+                width: '20px',
+                borderRadius: '50%',
+                marginRight: '8px',
+              }}
+              src={avatarUrl}
+            />
+            <div>{username}</div>{' '}
             <div
               style={{
-                marginLeft: '16px',
+                marginLeft: '8px',
                 backgroundColor: '#FF0000',
                 color: 'white',
                 borderRadius: '50%',
@@ -36,7 +48,7 @@ export const BusterUsernames = ({
               onClick={e => {
                 dispatchUserSelectedBusters({
                   type: 'TOGGLE_BUSTER',
-                  payload: u,
+                  payload: username,
                 });
               }}
             >
