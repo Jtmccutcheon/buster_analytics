@@ -1,12 +1,31 @@
+import { useQuery } from 'graphql-hooks';
+
+const BUSTER_QUERY = `query {
+  busters {
+    username
+    avatarUrl
+  }
+}`;
+
 export const BusterUsernames = ({
   userSelectedBusters,
   dispatchUserSelectedBusters,
 }) => {
+  const { loading, error, data } = useQuery(BUSTER_QUERY);
+
+  const getAvatarUrl = (u, data) => {
+    data.busters.find(b => (b.username = u));
+  };
+
+  console.log(data);
   return (
     <div
       style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}
     >
       {userSelectedBusters.map((u, index) => {
+        if (data.busters) {
+          console.log(getAvatarUrl(u, data));
+        }
         return (
           <div
             key={index}
