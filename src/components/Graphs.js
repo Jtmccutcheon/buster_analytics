@@ -91,6 +91,7 @@ export const Graphs = () => {
   // console.log(getQueryString({ userSelectedBusters, startDate, endDate }));
   // console.log(data);
 
+  const d = formattedData(data);
   return (
     <div style={{ margin: '1rem' }}>
       <BusterSelect
@@ -107,18 +108,18 @@ export const Graphs = () => {
         </button>
       )}
       <BusterDates setStartDate={setStartDate} setEndDate={setEndDate} />
-      <BusterLine data={formattedData(data)} />
-      <BusterBar data={formattedData(data)} />
-      <BusterCompose data={formattedData(data)} />
-      <BusterTree data={formattedData(data)} />
-      <BusterPieB data={formattedData(data)} />
+      <BusterLine data={d} />
+      <BusterBar data={d} />
+      <BusterCompose data={d} />
+      <BusterTree data={d} />
+      <BusterPieB data={d} />
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-        <BusterRadical data={formattedData(data)} />
-        <BusterPieA data={formattedData(data)} />
-        <BusterRadar data={formattedData(data)} />
+        <BusterPieA data={d} />
+        <BusterRadical data={d} />
+        <BusterRadar data={d} />
       </div>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-        <BusterFunnel data={formattedData(data)} />
+        <BusterFunnel data={d} />
       </div>
     </div>
   );

@@ -5,13 +5,23 @@ const getRandomPastelColor = () => {
 };
 
 export const formattedData = data => {
+  const end =
+    data?.busters?.length ||
+    data?.bustersByUsernames?.length ||
+    data?.bustersByUsernamesWithin?.length ||
+    data?.bustersWithin?.length;
+
+  const colors = Array.from({ length: end });
+
+  const colorArray = colors.map(() => getRandomPastelColor());
+
   if (!data) return [];
   if (data.busters?.length) {
     return data.busters?.map((b, index) => {
       return {
         ...b,
         wins: b?.datesWon?.length,
-        fill: getRandomPastelColor(),
+        fill: colorArray[index],
         children: [{ name: b?.username, wins: b?.datesWon?.length }],
       };
     });
@@ -22,7 +32,7 @@ export const formattedData = data => {
       return {
         ...b,
         wins: b?.datesWon?.length,
-        fill: getRandomPastelColor(),
+        fill: colorArray[index],
         children: [{ name: b.username, wins: b?.datesWon?.length }],
       };
     });
@@ -33,7 +43,7 @@ export const formattedData = data => {
       return {
         ...b,
         wins: b?.datesWon?.length,
-        fill: getRandomPastelColor(),
+        fill: colorArray[index],
         children: [{ name: b.username, wins: b?.datesWon?.length }],
       };
     });
@@ -44,7 +54,7 @@ export const formattedData = data => {
       return {
         ...b,
         wins: b?.datesWon?.length,
-        fill: getRandomPastelColor(),
+        fill: colorArray[index],
         children: [{ name: b.username, wins: b?.datesWon?.length }],
       };
     });
