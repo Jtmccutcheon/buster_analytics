@@ -1,9 +1,3 @@
-const getRandomPastelColor = () => {
-  const hue = Math.floor(Math.random() * 360);
-  const randomColor = `hsl(${hue}, 70%, 80%)`;
-  return randomColor;
-};
-
 const getColor = () =>
   'hsl(' +
   360 * Math.random() +
