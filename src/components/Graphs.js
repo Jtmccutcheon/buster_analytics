@@ -16,8 +16,8 @@ import { BusterRadar } from './graphs/BusterRadar';
 import { BusterRadical } from './graphs/BusterRadical';
 import { BusterFunnel } from './graphs/BusterFunnel';
 import { BusterTree } from './graphs/BusterTree';
-import { BusterUsernames } from './active_filters/BusterUsername';
-import { BusterDates } from './active_filters/BusterDates';
+import { BusterUsernames } from './filters/BusterUsername';
+import { BusterDates } from './filters/BusterDates';
 import { formattedData } from './utils/formatData';
 
 const initialBusters = [];
@@ -82,31 +82,19 @@ export const Graphs = () => {
     data,
   } = useQuery(query.string, query.var);
 
-  const onClear = () => {
-    setEndDate('');
-    setStartDate('');
-    dispatchUserSelectedBusters({ type: 'RESET' });
-  };
-  // console.log({ startDate, endDate, userSelectedBusters });
-  // console.log(getQueryString({ userSelectedBusters, startDate, endDate }));
-  // console.log(data);
-
   const d = formattedData(data);
   return (
     <div style={{ margin: '1rem' }}>
       <BusterSelect
         userSelectedBusters={userSelectedBusters}
         dispatchUserSelectedBusters={dispatchUserSelectedBusters}
+        setEndDate={setStartDate}
+        setStartDate={setStartDate}
       />
       <BusterUsernames
         userSelectedBusters={userSelectedBusters}
         dispatchUserSelectedBusters={dispatchUserSelectedBusters}
       />
-      {userSelectedBusters.length > 0 && (
-        <button onClick={onClear} style={{ margin: '1rem 1rem 0 1rem' }}>
-          clear
-        </button>
-      )}
       <BusterDates setStartDate={setStartDate} setEndDate={setEndDate} />
       <BusterLine data={d} />
       <BusterBar data={d} />

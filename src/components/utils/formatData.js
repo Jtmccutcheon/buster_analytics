@@ -4,6 +4,15 @@ const getRandomPastelColor = () => {
   return randomColor;
 };
 
+const getColor = () =>
+  'hsl(' +
+  360 * Math.random() +
+  ',' +
+  (25 + 70 * Math.random()) +
+  '%,' +
+  (75 + 10 * Math.random()) +
+  '%)';
+
 export const formattedData = data => {
   const end =
     data?.busters?.length ||
@@ -13,7 +22,7 @@ export const formattedData = data => {
 
   const colors = Array.from({ length: end });
 
-  const colorArray = colors.map(() => getRandomPastelColor());
+  const colorArray = colors.map(() => getColor());
 
   if (!data) return [];
   if (data.busters?.length) {

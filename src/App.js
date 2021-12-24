@@ -1,4 +1,5 @@
 import { GraphQLClient, ClientContext } from 'graphql-hooks';
+import memCache from 'graphql-hooks-memcache';
 import { Graphs } from './components/Graphs';
 
 import './styles.css';
@@ -6,6 +7,7 @@ import './styles.css';
 export default function App() {
   const client = new GraphQLClient({
     url: 'https://busterq.herokuapp.com/graphql',
+    cache: memCache(),
   });
 
   return (

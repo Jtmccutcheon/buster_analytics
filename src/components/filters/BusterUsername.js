@@ -12,8 +12,9 @@ export const BusterUsernames = ({
             key={index}
             style={{
               display: 'flex',
+              alignItems: 'center',
               justifyContent: 'space-between',
-              backgroundColor: '#36393F',
+              backgroundColor: '#393C42',
               color: 'white',
               borderRadius: '44px',
               padding: '7px 32px',
@@ -25,7 +26,7 @@ export const BusterUsernames = ({
             <div>{u}</div>{' '}
             <div
               style={{
-                marginLeft: '16px',
+                marginLeft: '12px',
                 backgroundColor: '#FF0000',
                 color: 'white',
                 borderRadius: '50%',
