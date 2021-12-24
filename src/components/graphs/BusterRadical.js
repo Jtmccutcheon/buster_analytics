@@ -39,13 +39,13 @@ export const BusterRadical = ({ data }) => {
   };
 
   return (
-    <ResponsiveContainer width={'100%'} height={400}>
+    <ResponsiveContainer width={'100%'} height={500}>
       <RadialBarChart
         innerRadius="10%"
         outerRadius="80%"
         data={data}
-        // startAngle={180}
-        // endAngle={0}
+        startAngle={180}
+        endAngle={0}
         onMouseOver={() => (tooltip = 'wins')}
       >
         <Tooltip content={<RadicalTooltip />} />

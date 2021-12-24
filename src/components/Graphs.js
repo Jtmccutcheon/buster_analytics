@@ -103,7 +103,7 @@ export const Graphs = () => {
         dispatchUserSelectedBusters={dispatchUserSelectedBusters}
       />
       {userSelectedBusters.length > 0 && (
-        <button onClick={onClear} style={{ margin: '1rem' }}>
+        <button onClick={onClear} style={{ margin: '1rem 1rem 0 1rem' }}>
           clear
         </button>
       )}
@@ -112,8 +112,17 @@ export const Graphs = () => {
       <BusterBar data={d} />
       <BusterCompose data={d} />
       <BusterTree data={d} />
-      <BusterPieB data={d} />
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <BusterPieB data={d} />
+      </div>
+      <div
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}
+      >
         <BusterPieA data={d} />
         <BusterRadical data={d} />
         <BusterRadar data={d} />

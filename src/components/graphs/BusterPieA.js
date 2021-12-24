@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { ResponsiveContainer, PieChart, Tooltip, Pie, Legend } from 'recharts';
+import { ResponsiveContainer, PieChart, Tooltip, Pie } from 'recharts';
+import { format } from 'date-fns';
 
 export const BusterPieA = ({ data }) => {
   const [pieTT, setPieTT] = useState('');
 
   const PieTip = ({ active, payload }) => {
     if (!active || !payload.length) return null;
-
     return payload.map(
       (i, index) =>
         i.dataKey === pieTT && (
@@ -20,6 +20,9 @@ export const BusterPieA = ({ data }) => {
           >
             <div>{i.payload.username}</div>
             <div>wins : {i.value}</div>
+            {i.payload.datesWon.map(d => (
+              <div>{format(new Date(d), 'MM/dd/yyyy')}</div>
+            ))}
           </div>
         ),
     );
@@ -53,9 +56,12 @@ export const BusterPieA = ({ data }) => {
   };
 
   return (
-    <ResponsiveContainer width={'100%'} height={600}>
+    <ResponsiveContainer
+      style={{ display: 'flex', justifyContent: 'center' }}
+      width={'100%'}
+      height={600}
+    >
       <PieChart onMouseOver={() => setPieTT('wins')}>
-        <Legend layout="vertical" />
         <Tooltip content={<PieTip />} />
         <Pie
           data={data}

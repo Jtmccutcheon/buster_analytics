@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Sector, ResponsiveContainer, Legend } from 'recharts';
 
 const renderActiveShape = props => {
   const RADIAN = Math.PI / 180;
@@ -84,14 +84,15 @@ export const BusterPieB = ({ data }) => {
   );
 
   return (
-    <ResponsiveContainer height={400}>
-      <PieChart margin={{ left: 200 }}>
+    <ResponsiveContainer height={700}>
+      <PieChart>
+        <Legend layout="vertical" align="center" verticalAlign="bottom" />
         <Pie
           activeIndex={activeIndex}
           activeShape={renderActiveShape}
           data={data}
-          cx={200}
-          cy={200}
+          cx={'50%'}
+          cy={'50%'}
           innerRadius={90}
           outerRadius={120}
           fill="#8884d8"

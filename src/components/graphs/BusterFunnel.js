@@ -36,7 +36,7 @@ export const BusterFunnel = ({ data }) => {
         <Funnel dataKey="wins" data={data} isAnimationActive>
           <Tooltip content={renderTooltip} />
           <LabelList
-            position="right"
+            position="center"
             fill="black"
             stroke="black"
             dataKey="username"
