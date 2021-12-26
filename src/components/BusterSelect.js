@@ -91,7 +91,7 @@ export const BusterSelect = ({
             backgroundColor: '#DBDCDD',
             padding: '1rem',
             borderRadius: '8px',
-            transition: 'left 1s linear',
+            minWidth: '200px',
           }}
         >
           {data.busters.map(
@@ -104,7 +104,7 @@ export const BusterSelect = ({
                     margin: '1rem 0',
                     cursor: 'pointer',
                   }}
-                  onClick={e =>
+                  onClick={() =>
                     dispatchUserSelectedBusters({
                       type: 'TOGGLE_BUSTER',
                       payload: b.username,
@@ -112,7 +112,7 @@ export const BusterSelect = ({
                   }
                 >
                   <input
-                    checked={userSelectedBusters.includes(b.username)}
+                    defaultChecked={userSelectedBusters.includes(b.username)}
                     type={'checkbox'}
                     value={b.username}
                   ></input>
@@ -120,6 +120,7 @@ export const BusterSelect = ({
                 </div>
               ),
           )}
+
           <button onClick={onClear} style={{}}>
             View All
           </button>
