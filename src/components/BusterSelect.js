@@ -112,7 +112,7 @@ export const BusterSelect = ({
                   }
                 >
                   <input
-                    defaultChecked={userSelectedBusters.includes(b.username)}
+                    checked={userSelectedBusters.includes(b.username)}
                     type={'checkbox'}
                     value={b.username}
                   ></input>
