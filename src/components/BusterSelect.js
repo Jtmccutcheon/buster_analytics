@@ -92,6 +92,8 @@ export const BusterSelect = ({
             padding: '1rem',
             borderRadius: '8px',
             minWidth: '200px',
+            display: 'grid',
+            gridTemplateColumns: '200px 200px',
           }}
         >
           {data.busters.map(
@@ -101,7 +103,7 @@ export const BusterSelect = ({
                   key={index}
                   style={{
                     textAlign: 'left',
-                    margin: '1rem 0',
+                    margin: '0 0 1rem 0',
                     cursor: 'pointer',
                   }}
                   onClick={() =>
@@ -120,10 +122,16 @@ export const BusterSelect = ({
                 </div>
               ),
           )}
-
-          <button onClick={onClear} style={{}}>
-            View All
-          </button>
+          <br />
+          <div
+            style={{
+              gridColumnStart: 'span 2',
+            }}
+          >
+            <button style={{ cursor: 'pointer' }} onClick={onClear}>
+              View All
+            </button>
+          </div>
         </div>
       )}
     </div>
