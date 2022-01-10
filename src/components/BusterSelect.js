@@ -93,7 +93,7 @@ export const BusterSelect = ({
             borderRadius: '8px',
             minWidth: '200px',
             display: 'grid',
-            gridTemplateColumns: '200px 200px',
+            gridTemplateColumns: '180px 180px',
           }}
         >
           {data.busters.map(
