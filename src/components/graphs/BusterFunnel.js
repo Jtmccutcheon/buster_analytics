@@ -31,7 +31,7 @@ export const BusterFunnel = ({ data }) => {
     );
   };
   return (
-    <ResponsiveContainer width={'50%'} height={400}>
+    <ResponsiveContainer width={'50%'} height={800}>
       <FunnelChart onMouseOver={() => setTT('wins')}>
         <Funnel dataKey="wins" data={data} isAnimationActive>
           <Tooltip content={renderTooltip} />
