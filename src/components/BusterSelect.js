@@ -43,65 +43,26 @@ export const BusterSelect = ({
   if (error) return <div>Something Bad Happened</div>;
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
+    <div className="buster_select_container">
+      <div className="buster_select_container">
         <div
           onClick={() => setShowBusters(!showBusters)}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            backgroundColor: '#0250BB',
-            padding: '12px 20px',
-            borderRadius: '44px',
-            color: 'white',
-            cursor: 'pointer',
-          }}
+          className="show_busters_button"
         >
           show busters
-          <div style={{ paddingLeft: '12px' }}>
+          <div className="icon_container">
             {showBusters ? <IoChevronUpOutline /> : <IoChevronDownOutline />}
           </div>
         </div>
       </div>
       {showBusters && (
-        <div
-          ref={dropdownRef}
-          style={{
-            position: 'absolute',
-            top: '7%',
-            left: '50%',
-            transform: 'translate(-50%, 0%)',
-            zIndex: '2',
-            backgroundColor: '#DBDCDD',
-            padding: '1rem',
-            borderRadius: '8px',
-            minWidth: '200px',
-            display: 'grid',
-            gridTemplateColumns: '180px 180px',
-          }}
-        >
+        <div ref={dropdownRef} className="buster_select_menu">
           {data.busters.map(
             (b, index) =>
               b && (
                 <div
                   key={index}
-                  style={{
-                    textAlign: 'left',
-                    margin: '0 0 1rem 0',
-                    cursor: 'pointer',
-                  }}
+                  className="buster_list"
                   onClick={() =>
                     dispatchUserSelectedBusters({
                       type: 'TOGGLE_BUSTER',
@@ -118,13 +79,8 @@ export const BusterSelect = ({
                 </div>
               ),
           )}
-          <br />
-          <div
-            style={{
-              gridColumnStart: 'span 2',
-            }}
-          >
-            <button style={{ cursor: 'pointer' }} onClick={onClear}>
+          <div className="button_container">
+            <button className="view_button" onClick={onClear}>
               View All
             </button>
           </div>

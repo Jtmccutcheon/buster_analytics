@@ -57,3 +57,51 @@
   height: 20px;
   cursor: pointer;
 }
+
+.buster_select_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show_busters_button {
+  display: flex;
+  align-items: center;
+  background-color: #0250bb;
+  padding: 12px 20px;
+  border-radius: 44px;
+  color: white;
+  cursor: pointer;
+}
+
+.icon_container {
+  padding-left: 12px;
+}
+
+.buster_select_menu {
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 2;
+  background-color: #dbdcdd;
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 200px;
+  display: grid;
+  grid-template-columns: 180px 180px;
+}
+
+.buster_list {
+  text-align: left;
+  margin: 0 0 1rem 0;
+  cursor: pointer;
+}
+
+.button_container {
+  grid-column-start: span 2;
+}
+
+.view_button {
+  cursor: pointer;
+}
