@@ -6,8 +6,11 @@ import {
   Tooltip,
   LabelList,
 } from 'recharts';
+import useWindowSize from '../../hooks/useWindowSize';
 
 export const BusterFunnel = ({ data }) => {
+  const { width } = useWindowSize();
+
   const [tt, setTT] = useState('');
 
   const renderTooltip = ({ active, payload }) => {
@@ -30,8 +33,9 @@ export const BusterFunnel = ({ data }) => {
         ),
     );
   };
+
   return (
-    <ResponsiveContainer width={'50%'} height={800}>
+    <ResponsiveContainer width={width < 1500 ? '100%' : '50%'} height={800}>
       <FunnelChart onMouseOver={() => setTT('wins')}>
         <Funnel dataKey="wins" data={data} isAnimationActive>
           <Tooltip content={renderTooltip} />
