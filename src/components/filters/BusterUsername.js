@@ -3,37 +3,13 @@ export const BusterUsernames = ({
   dispatchUserSelectedBusters,
 }) => {
   return (
-    <div
-      style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}
-    >
+    <div className="selected_container">
       {userSelectedBusters.map((u, index) => {
         return (
-          <div
-            key={index}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              backgroundColor: '#393C42',
-              color: 'white',
-              borderRadius: '44px',
-              padding: '7px 32px',
-              margin: '1rem .25rem 0 .25rem',
-              textOverflow: 'ellipsis',
-              maxHeight: '32px',
-            }}
-          >
+          <div key={index} className="user_tags">
             <div>{u}</div>{' '}
             <div
-              style={{
-                marginLeft: '12px',
-                backgroundColor: '#FF0000',
-                color: 'white',
-                borderRadius: '50%',
-                width: '20px',
-                height: '20px',
-                cursor: 'pointer',
-              }}
+              className="delete_selected"
               onClick={e => {
                 dispatchUserSelectedBusters({
                   type: 'TOGGLE_BUSTER',

@@ -37,7 +37,7 @@ export const BusterPieA = ({ data }) => {
     percent,
   }) => {
     const RADIAN = Math.PI / 180;
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.9;
+    const radius = innerRadius + (outerRadius - innerRadius) * 1.15;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -67,8 +67,7 @@ export const BusterPieA = ({ data }) => {
           data={data}
           dataKey="wins"
           nameKey="username"
-          labelLine={false}
-          fill="#8884d8"
+          labelLine={true}
           label={<PieLabel />}
         ></Pie>
       </PieChart>

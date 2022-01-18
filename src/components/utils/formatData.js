@@ -1,65 +1,23 @@
-const getColor = () =>
-  'hsl(' +
-  360 * Math.random() +
-  ',' +
-  (25 + 70 * Math.random()) +
-  '%,' +
-  (75 + 10 * Math.random()) +
-  '%)';
+import { getColor } from './getColor';
 
 export const formattedData = data => {
-  const end =
-    data?.busters?.length ||
-    data?.bustersByUsernames?.length ||
-    data?.bustersByUsernamesWithin?.length ||
-    data?.bustersWithin?.length;
+  const busters =
+    data?.busters ||
+    data?.bustersByUsernames ||
+    data?.bustersByUsernamesWithin ||
+    data?.bustersWithin ||
+    [];
 
-  const colors = Array.from({ length: end });
+  const colors = Array.from({ length: busters.length });
 
   const colorArray = colors.map(() => getColor());
 
   if (!data) return [];
-  if (data.busters?.length) {
-    return data.busters?.map((b, index) => {
-      return {
-        ...b,
-        wins: b?.datesWon?.length,
-        fill: colorArray[index],
-        children: [{ name: b?.username, wins: b?.datesWon?.length }],
-      };
-    });
-  }
 
-  if (data.bustersByUsernames?.length) {
-    return data.bustersByUsernames?.map((b, index) => {
-      return {
-        ...b,
-        wins: b?.datesWon?.length,
-        fill: colorArray[index],
-        children: [{ name: b.username, wins: b?.datesWon?.length }],
-      };
-    });
-  }
-
-  if (data.bustersByUsernamesWithin?.length) {
-    return data.bustersByUsernamesWithin?.map((b, index) => {
-      return {
-        ...b,
-        wins: b?.datesWon?.length,
-        fill: colorArray[index],
-        children: [{ name: b.username, wins: b?.datesWon?.length }],
-      };
-    });
-  }
-
-  if (data.bustersWithin?.length) {
-    return data.bustersWithin?.map((b, index) => {
-      return {
-        ...b,
-        wins: b?.datesWon?.length,
-        fill: colorArray[index],
-        children: [{ name: b.username, wins: b?.datesWon?.length }],
-      };
-    });
-  }
+  return busters.map((b, index) => ({
+    ...b,
+    wins: b?.datesWon?.length,
+    fill: colorArray[index],
+    children: [{ name: b?.username, wins: b?.datesWon?.length }],
+  }));
 };

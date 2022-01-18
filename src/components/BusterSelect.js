@@ -19,11 +19,7 @@ export const BusterSelect = ({
   const [showBusters, setShowBusters] = useState(false);
   const dropdownRef = useRef(null);
 
-  const onClear = () => {
-    setEndDate('');
-    setStartDate('');
-    dispatchUserSelectedBusters({ type: 'RESET' });
-  };
+  const onClear = () => dispatchUserSelectedBusters({ type: 'RESET' });
 
   useEffect(() => {
     const handleOutsideClick = e => {

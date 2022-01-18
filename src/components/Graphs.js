@@ -22,7 +22,7 @@ import { formattedData } from './utils/formatData';
 
 const initialBusters = [];
 
-function busterReducer(state, action) {
+const busterReducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_BUSTER':
       return state.includes(action.payload)
@@ -34,7 +34,7 @@ function busterReducer(state, action) {
     default:
       throw new Error();
   }
-}
+};
 
 export const Graphs = () => {
   const [userSelectedBusters, dispatchUserSelectedBusters] = useReducer(
@@ -44,20 +44,24 @@ export const Graphs = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
+  // no busters selected and no date range passed
   const defaultFilter = !(
     userSelectedBusters.length > 0 &&
     startDate.length > 0 &&
     endDate.length > 0
   );
 
+  // no buseter selected but date range is passed
   const bustersWithin =
     userSelectedBusters.length < 1 &&
     startDate.length > 0 &&
     endDate.length > 0;
 
+  // busters selected but no date range passed
   const bustersNoDate =
     userSelectedBusters.length > 0 && !startDate.length && !endDate.length;
 
+  // busters selected and date range is passed
   const bustersSelectedWithin =
     userSelectedBusters.length > 0 &&
     startDate.length > 0 &&
@@ -84,7 +88,7 @@ export const Graphs = () => {
 
   const d = formattedData(data);
   return (
-    <div style={{ margin: '1rem' }}>
+    <div className="container">
       <BusterSelect
         userSelectedBusters={userSelectedBusters}
         dispatchUserSelectedBusters={dispatchUserSelectedBusters}
@@ -100,22 +104,11 @@ export const Graphs = () => {
       <BusterBar data={d} />
       <BusterCompose data={d} />
       <BusterTree data={d} />
-      <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-        <BusterPieB data={d} />
-      </div>
-      <div
-        style={{
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'column',
-        }}
-      >
-        <BusterPieA data={d} />
-        <BusterRadical data={d} />
-        <BusterRadar data={d} />
-      </div>
-      <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+      <BusterPieB data={d} />
+      <BusterPieA data={d} />
+      <BusterRadical data={d} />
+      <BusterRadar data={d} />
+      <div className="funnel">
         <BusterFunnel data={d} />
       </div>
     </div>

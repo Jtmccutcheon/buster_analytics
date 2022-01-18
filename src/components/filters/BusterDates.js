@@ -5,32 +5,19 @@ export const BusterDates = ({
   setEndDate,
 }) => {
   return (
-    <div
-      style={{
-        margin: '1rem',
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
-      <label>Start: </label>
+    <div className="dates">
+      <label>start date: </label>
       <input
-        style={{
-          borderRadius: '14px',
-          borderStyle: 'groove',
-          marginLeft: '.5rem',
-        }}
+        className="date_input"
         placeholder={startDate}
         value={startDate}
         onChange={e => setStartDate(e.target.value)}
         type="date"
-      ></input>{' '}
-      <label style={{ paddingLeft: '1rem' }}> End: </label>
+        max={endDate}
+      ></input>
+      <label className="end_label">end date: </label>
       <input
-        style={{
-          borderRadius: '14px',
-          borderStyle: 'groove',
-          marginLeft: '.5rem',
-        }}
+        className="date_input"
         placeholder={endDate}
         value={endDate}
         type="date"
