@@ -67,16 +67,15 @@ export const Graphs = () => {
     startDate.length > 0 &&
     endDate.length > 0;
 
-  const getQueryString = () =>
-    ({
-      [defaultFilter]: DEFAULT_QUERY,
-      [bustersWithin]: BUSTERS_WITHIN,
-      [bustersNoDate]: BUSTERS_NO_DATES,
-      [bustersSelectedWithin]: BUSTERS_SELECTED_WITHIN,
-    }.true);
+  const queryString = {
+    [defaultFilter]: DEFAULT_QUERY,
+    [bustersWithin]: BUSTERS_WITHIN,
+    [bustersNoDate]: BUSTERS_NO_DATES,
+    [bustersSelectedWithin]: BUSTERS_SELECTED_WITHIN,
+  }.true;
 
   const query = {
-    string: getQueryString(),
+    string: queryString,
     var: { variables: { usernames: userSelectedBusters, startDate, endDate } },
   };
 

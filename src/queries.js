@@ -1,5 +1,6 @@
 export const DEFAULT_QUERY = `query {
     busters {
+      id
       username
       datesWon
       avatarUrl
@@ -29,6 +30,17 @@ export const BUSTERS_WITHIN = `
       bustersWithin(startDate: $startDate, endDate: $endDate) {
         username
         datesWon
+      }
+    }
+  `;
+
+export const BUSTERS_BY_YEAR = `
+    query bustersByYear($year: String!) {
+      bustersByYear(year: $year) {
+        id
+        username
+        datesWon
+        avatarUrl
       }
     }
   `;

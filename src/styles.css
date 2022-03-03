@@ -3,6 +3,30 @@
   text-align: center;
 }
 
+.header {
+  width: 100%;
+  background-color: #4752c4;
+  color: #fff;
+  height: 5rem;
+  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+.header_cont {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+.header_item {
+  margin: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 .container {
   margin: 1rem;
 }
@@ -58,8 +82,8 @@
   background-color: #ff0000;
   color: white;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 17px;
   cursor: pointer;
 }
 
@@ -72,7 +96,7 @@
 .show_busters_button {
   display: flex;
   align-items: center;
-  background-color: #0250bb;
+  background-color: #4752c4;
   padding: 12px 20px;
   border-radius: 44px;
   color: white;
@@ -85,7 +109,7 @@
 
 .buster_select_menu {
   position: absolute;
-  top: 7%;
+  top: 16%;
   left: 50%;
   transform: translate(-50%, 0%);
   z-index: 2;
@@ -103,10 +127,164 @@
   cursor: pointer;
 }
 
+.buster_list_stats {
+  background-color: #18191c;
+  padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+  border-radius: 14px;
+}
+
 .button_container {
   grid-column-start: span 2;
 }
 
 .view_button {
   cursor: pointer;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 13% 87%;
+  grid-template-rows: auto;
+  grid-template-areas: 'left right';
+  height: 100vh;
+}
+
+.stats_collapsed {
+  display: grid;
+  grid-template-columns: 3% 97%;
+  grid-template-rows: auto;
+  grid-template-areas: 'left right';
+  height: 100vh;
+}
+
+.stat_left {
+  grid-area: left;
+}
+
+.stat_right {
+  grid-area: right;
+}
+
+.left {
+  background-color: #2f3136;
+  color: #fff;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+
+  overflow: auto;
+  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+.left_busters {
+  cursor: pointer;
+  justify-self: center;
+  margin: 1rem 0;
+}
+
+.left_arrow {
+  cursor: pointer;
+  width: 100%;
+  align-self: center;
+  font-size: 25px;
+  text-align: center;
+}
+
+.season {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.stats_busters {
+  margin: 0.5rem;
+}
+
+.list_buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.list_button {
+  width: 72px;
+}
+
+.right_content {
+  width: calc(100% - 249.538px);
+  height: calc(100% - 25px);
+}
+
+.right_content_collapsed {
+  width: calc(100% - 57.6px);
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 64px;
+}
+
+.stats_selected {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+}
+
+.stats_dates_container {
+  padding: 1rem;
+  position: absolute;
+  z-index: 1;
+  border-radius: 6px;
+  border: solid 15px transparent;
+  border-style: solid;
+  border-width: 1px 0 0 1px;
+  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+.stats_dates_container:after,
+.stats_dates_container:before {
+  right: 100%;
+  top: 10%;
+}
+
+.stats_dates_container:after {
+  border: solid transparent;
+  content: '';
+  position: absolute;
+  border-right-color: inherit;
+  border-width: 10px;
+}
+
+.busters_array {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.stats_dates {
+  flex-direction: column;
+  margin: 0.25rem 0;
+}
+
+.stats_selected_buster {
+  display: flex;
+  align-items: center;
+}
+
+.color {
+  margin-right: 0.25rem;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.stats_graph {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }

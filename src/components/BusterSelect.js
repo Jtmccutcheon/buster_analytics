@@ -4,6 +4,7 @@ import { IoChevronUpOutline, IoChevronDownOutline } from 'react-icons/io5';
 
 const BUSTER_QUERY = `query {
   busters {
+    id
     username
     avatarUrl
   }
@@ -20,6 +21,11 @@ export const BusterSelect = ({
   const dropdownRef = useRef(null);
 
   const onClear = () => dispatchUserSelectedBusters({ type: 'RESET' });
+  const toggleBuster = username =>
+    dispatchUserSelectedBusters({
+      type: 'TOGGLE_BUSTER',
+      payload: username,
+    });
 
   useEffect(() => {
     const handleOutsideClick = e => {
@@ -57,28 +63,21 @@ export const BusterSelect = ({
       </div>
       {showBusters && (
         <div ref={dropdownRef} className="buster_select_menu">
-          {data.busters.map(
-            (b, index) =>
-              b && (
-                <div
-                  key={index}
-                  className="buster_list"
-                  onClick={() =>
-                    dispatchUserSelectedBusters({
-                      type: 'TOGGLE_BUSTER',
-                      payload: b.username,
-                    })
-                  }
-                >
-                  <input
-                    checked={userSelectedBusters.includes(b.username)}
-                    type={'checkbox'}
-                    value={b.username}
-                  ></input>
-                  {b.username}
-                </div>
-              ),
-          )}
+          {data.busters.map(b => (
+            <div
+              key={b.id}
+              className="buster_list"
+              onClick={() => toggleBuster(b.username)}
+            >
+              <input
+                checked={userSelectedBusters.includes(b.username)}
+                type={'checkbox'}
+                value={b.username}
+                onChange={() => {}}
+              ></input>
+              {b.username}
+            </div>
+          ))}
           <div className="button_container">
             <button className="view_button" onClick={onClear}>
               View All
