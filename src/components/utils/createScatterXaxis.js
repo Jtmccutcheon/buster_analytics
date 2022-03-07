@@ -10,7 +10,7 @@ const monthDates = (year, monthIndex) =>
         .add(i, 'days')
         .format('YYYY-MM-DD'),
     )
-    .sort((a, b) => a - b);
+    .sort((a, b) => b - a);
 export const createScatterXaxis = () => {
   const date = new Date();
   const year = date.getFullYear();
@@ -24,5 +24,5 @@ export const createScatterXaxis = () => {
     month--;
   }
 
-  return res.flat().sort((a, b) => a - b);
+  return res.flat().sort((a, b) => b - a);
 };
