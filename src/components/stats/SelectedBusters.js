@@ -1,58 +1,77 @@
 import { useState } from 'react';
 import { format } from 'date-fns';
+import useWindowSize from '../../hooks/useWindowSize';
+import { getSymbol } from '../utils/getSymbol';
 
-const DateTooltip = ({ buster }) => {
+const DateTooltip = ({ buster, width }) => {
   const element = document.getElementById(buster.id);
+  const extraTopOffset = width > 600 ? 98 : 68;
   return (
-    <div
-      style={{
-        backgroundColor: `${buster.fill}`,
-        top: `${element.offsetTop}px`,
-        left: `${element.offsetLeft + 90}px`,
-        borderRightColor: `${buster.fill}`,
-      }}
-      className="stats_dates_container"
-    >
-      Dates Won
-      {buster?.datesWon?.map(d => (
-        <div key={d} className="stats_dates">
-          {format(new Date(d), 'MM/dd')}
-        </div>
-      ))}
-    </div>
+    buster && (
+      <div
+        style={{
+          backgroundColor: `${buster.fill}`,
+          top: `${element.offsetTop + extraTopOffset}px`,
+          left: `${element.offsetLeft}px`,
+          borderBottomColor: `${buster.fill}`,
+        }}
+        className="stats_dates_container"
+      >
+        Dates Won
+        {buster?.datesWon?.map(d => (
+          <div key={d} className="stats_dates">
+            {format(new Date(d), 'MM/dd')}
+          </div>
+        ))}
+      </div>
+    )
   );
 };
 
-export const SelectedBuster = ({ userSelectedBusters }) => {
+export const SelectedBuster = ({ userSelectedBusters, showMenu }) => {
+  const { width } = useWindowSize();
   const [hoveredBuster, setHoveredBuster] = useState(null);
   return (
-    <div className="busters_array">
-      {userSelectedBusters.map(b => {
-        return (
-          <div className="stats_selected">
-            <div>
-              <img
-                id={b.id}
-                className="avatar"
-                src={b.avatarUrl}
-                alt="discord_ava"
-                onMouseEnter={() => setHoveredBuster(b)}
-                onMouseLeave={() => setHoveredBuster(null)}
-              ></img>
-              <div className="stats_selected_buster">
-                <div
-                  className="color"
+    userSelectedBusters.length > 0 && (
+      <div className="busters_array">
+        {userSelectedBusters.map(b => {
+          return (
+            <div id={b.id} className="stats_selected">
+              <div className="seleceted_group">
+                <img
+                  className={width > 600 ? 'avatar' : 'small_avatar'}
+                  src={b.avatarUrl}
+                  alt="discord_ava"
+                  onMouseEnter={() => setHoveredBuster(b)}
+                  onMouseLeave={() => setHoveredBuster(null)}
+                ></img>
+                <div className="stats_selected_buster">
+                  <div className="stats_selected_buster_username">
+                    {b.username}
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style={{ height: '20px', width: '20px' }}
+                key={b.id + b.shape + b.color}
+              >
+                <svg
                   style={{
-                    backgroundColor: b.fill,
+                    overflow: 'visible',
+                    marginRight: '1rem',
+                    height: '20px',
+                    width: '20px',
                   }}
-                ></div>
-                {b.username}
+                >
+                  {getSymbol(b.shape, b.fill)}
+                </svg>
               </div>
             </div>
-          </div>
-        );
-      })}
-      {hoveredBuster && <DateTooltip buster={hoveredBuster} />}
-    </div>
+          );
+        })}
+        {hoveredBuster && <DateTooltip buster={hoveredBuster} width={width} />}
+      </div>
+    )
   );
 };

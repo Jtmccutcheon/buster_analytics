@@ -5,10 +5,10 @@ export const Header = () => {
     <div className="header">
       <div className="header_cont">
         <Link to="/" className="header_item">
-          Home
+          All Time
         </Link>
         <Link to="/stats" className="header_item">
-          Stats
+          Season
         </Link>
         <Link to="/history" className="header_item">
           History

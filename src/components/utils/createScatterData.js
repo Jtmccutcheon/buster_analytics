@@ -1,37 +1,36 @@
-import { getMonthNumber } from './getMonthNumber';
-
-const getZ = number => Number(`${number + '00'}`) + 100;
+import moment from 'moment';
+// import { getMonthNumber } from './getMonthNumber';
+import { createScatterXaxis } from './createScatterXaxis';
 
 export const createScatterData = busters => {
   if (!busters) return [];
 
-  // z doesnt seem to impact size of dot
-  // like it does on recharts demo but oh well
-
-  const months = [
-    { x: 'Jan' },
-    { x: 'Feb' },
-    { x: 'Mar' },
-    { x: 'Apr' },
-    { x: 'May' },
-    { x: 'Jun' },
-    { x: 'Jul' },
-    { x: 'Aug' },
-    { x: 'Sept' },
-    { x: 'Oct' },
-    { x: 'Nov' },
-    { x: 'Dec' },
-  ];
-
-  return busters.map(b => {
-    return months.map(m => ({
-      x: m.x,
-      z: getZ(
-        b.datesWon.filter(d => d.slice(5, 7) === getMonthNumber(m.x)).length,
-      ),
-      y:
-        b.datesWon.filter(d => d.slice(5, 7) === getMonthNumber(m.x)).length ||
-        0,
-    }));
+  const dates = createScatterXaxis();
+  const defaultData = dates.map(d => ({
+    x: d,
+    y: -1,
+  }));
+  const busterData = busters.map(b => {
+    return dates
+      .map(d => ({
+        x: d,
+        y: getY(b.datesWon, d),
+        u: b.username,
+      }))
+      .filter(i => i.y !== 0);
   });
+
+  return {
+    defaultData,
+    busterData,
+  };
+};
+
+const getY = (dates, date) => {
+  const slicer = date.slice(0, 7);
+  const poop = dates.filter(d => d.startsWith(slicer));
+  const bloop = poop.map(d => moment(d).format('YYYY-MM-DD'));
+  const doop = bloop.indexOf(date);
+
+  return doop + 1;
 };

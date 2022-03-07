@@ -6,6 +6,7 @@ export const BusterList = ({
   data,
   dispatchUserSelectedBusters,
   userSelectedBusters,
+  width,
 }) => {
   const toggleBuster = (buster, index) =>
     dispatchUserSelectedBusters({
@@ -34,8 +35,8 @@ export const BusterList = ({
   };
 
   return (
-    <div className="left_busters">
-      {showMenu && (
+    showMenu && (
+      <div className={width > 600 ? 'left_busters' : 'left_busters_mobile'}>
         <div className="list_buttons">
           <button className="list_button" onClick={selectAll}>
             select all
@@ -44,9 +45,7 @@ export const BusterList = ({
             clear
           </button>
         </div>
-      )}
-      {showMenu &&
-        data.bustersByYear.map((b, index) => (
+        {data.bustersByYear.map((b, index) => (
           <div
             key={b.id}
             className="stats_busters"
@@ -63,6 +62,7 @@ export const BusterList = ({
             </div>
           </div>
         ))}
-    </div>
+      </div>
+    )
   );
 };

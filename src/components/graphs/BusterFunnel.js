@@ -37,13 +37,14 @@ export const BusterFunnel = ({ data }) => {
   return (
     <ResponsiveContainer width={width < 1500 ? '100%' : '50%'} height={800}>
       <FunnelChart onMouseOver={() => setTT('wins')}>
-        <Funnel dataKey="wins" data={data} isAnimationActive>
-          <Tooltip content={renderTooltip} />
+        <Tooltip content={renderTooltip} />
+        <Funnel dataKey="wins" nameKey="username" data={data} isAnimationActive>
           <LabelList
             position="center"
             fill="black"
             stroke="black"
             dataKey="username"
+            style={{ pointerEvents: 'none' }}
           />
         </Funnel>
       </FunnelChart>

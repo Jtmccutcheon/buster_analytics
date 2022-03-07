@@ -2,6 +2,7 @@ import { useState, useReducer } from 'react';
 import { useQuery } from 'graphql-hooks';
 import { BUSTERS_BY_YEAR } from '../queries';
 import { createScatterData } from './utils/createScatterData';
+import useWindowSize from '../hooks/useWindowSize';
 import { BusterList } from './stats/BusterList';
 import { ArrowIcon } from './stats/ArrowIcon';
 import { SelectedBuster } from './stats/SelectedBusters';
@@ -33,6 +34,7 @@ export const Stats = () => {
     busterReducer,
     initialBusters,
   );
+  const { width } = useWindowSize();
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Something Bad Happened</div>;
@@ -40,29 +42,37 @@ export const Stats = () => {
   const toggleMenu = () => setShowMenu(!showMenu);
   const d = createScatterData(userSelectedBusters);
 
+  const leftStyles = {
+    [!showMenu]: 'left_collapsed',
+    [showMenu]: 'left',
+    [showMenu && width < 600]: ['left', 'left_mobile'].join(' '),
+  }.true;
+
   return (
     <div>
       <div className={showMenu ? 'stats' : 'stats_collapsed'}>
-        <div className="left">
+        <div className={leftStyles}>
           <BusterList
             showMenu={showMenu}
+            width={width}
             data={data}
             dispatchUserSelectedBusters={dispatchUserSelectedBusters}
             userSelectedBusters={userSelectedBusters}
           />
           <ArrowIcon toggleMenu={toggleMenu} showMenu={showMenu} />
         </div>
-        <div className="right">
-          <div
-            className={showMenu ? 'right_content' : 'right_content_collapsed'}
-          >
-            <div className="season">{new Date().getFullYear()} Stats</div>
+        <div className={showMenu ? 'right' : 'right_collapsed'}>
+          <div className={showMenu ? 'season' : 'season_collapsed'}>
+            {new Date().getFullYear()} Season
             {userSelectedBusters.length < 1 && <div>Select a Buster</div>}
-            <SelectedBuster userSelectedBusters={userSelectedBusters} />
-            <div className="stats_graph">
-              <BusterScatter data={d} busters={userSelectedBusters} />
-            </div>
           </div>
+          <div className="stats_graph">
+            <BusterScatter data={d} busters={userSelectedBusters} />
+          </div>
+          <SelectedBuster
+            showMenu={showMenu}
+            userSelectedBusters={userSelectedBusters}
+          />
         </div>
       </div>
     </div>
