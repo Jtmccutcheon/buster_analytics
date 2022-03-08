@@ -62,17 +62,17 @@ export const Stats = () => {
           <ArrowIcon toggleMenu={toggleMenu} showMenu={showMenu} />
         </div>
         <div className={showMenu ? 'right' : 'right_collapsed'}>
-          <div className={showMenu ? 'season' : 'season_collapsed'}>
+          <div className={'season'}>
             {new Date().getFullYear()} Season
             {userSelectedBusters.length < 1 && <div>Select a Buster</div>}
-          </div>
-          <div className="stats_graph">
-            <BusterScatter data={d} busters={userSelectedBusters} />
           </div>
           <SelectedBuster
             showMenu={showMenu}
             userSelectedBusters={userSelectedBusters}
           />
+          <div className="stats_graph">
+            <BusterScatter data={d} busters={userSelectedBusters} />
+          </div>
         </div>
       </div>
     </div>

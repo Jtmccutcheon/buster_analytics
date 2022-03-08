@@ -210,14 +210,6 @@
   font-size: 25px;
   font-weight: bold;
   margin: 1rem;
-  width: calc(100% - 248px);
-}
-
-.season_collapsed {
-  font-size: 25px;
-  font-weight: bold;
-  margin: 1rem;
-  width: calc(100% - 25px);
 }
 
 .stats_busters {
@@ -231,7 +223,7 @@
 
 .list_button {
   margin: 1rem 0.5rem;
-  width: 62px;
+  width: 72px;
 }
 
 .right {

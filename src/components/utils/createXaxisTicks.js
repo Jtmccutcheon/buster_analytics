@@ -19,5 +19,9 @@ export const createXaxisTicks = props => {
     month--;
   }
 
-  return res;
+  return res.sort((a, b) => {
+    a = moment(a);
+    b = moment(b);
+    return a < b ? -1 : 1;
+  });
 };

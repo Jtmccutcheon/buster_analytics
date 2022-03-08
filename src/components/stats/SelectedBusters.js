@@ -7,7 +7,8 @@ const DateTooltip = ({ buster, width }) => {
   const element = document.getElementById(buster.id);
   const extraTopOffset = width > 600 ? 98 : 68;
   return (
-    buster && (
+    buster &&
+    width > 600 && (
       <div
         style={{
           backgroundColor: `${buster.fill}`,
@@ -36,7 +37,11 @@ export const SelectedBuster = ({ userSelectedBusters, showMenu }) => {
       <div className="busters_array">
         {userSelectedBusters.map(b => {
           return (
-            <div id={b.id} className="stats_selected">
+            <div
+              key={b.id + b.shape + b.color}
+              id={b.id}
+              className="stats_selected"
+            >
               <div className="seleceted_group">
                 <img
                   className={width > 600 ? 'avatar' : 'small_avatar'}
@@ -52,10 +57,7 @@ export const SelectedBuster = ({ userSelectedBusters, showMenu }) => {
                 </div>
               </div>
 
-              <div
-                style={{ height: '20px', width: '20px' }}
-                key={b.id + b.shape + b.color}
-              >
+              <div style={{ height: '20px', width: '20px' }}>
                 <svg
                   style={{
                     overflow: 'visible',
