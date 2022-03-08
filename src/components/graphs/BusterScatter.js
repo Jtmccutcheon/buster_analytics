@@ -12,17 +12,19 @@ import moment from 'moment';
 import { createXaxisTicks } from '../utils/createXaxisTicks';
 
 const CustomTooltip = props => {
-  if (!props.active) return null;
+  if (!props || !props.active) return null;
   return (
     <div
       style={{
-        backgroundColor: '#FFF',
         padding: '15px 10px',
         border: '1px solid lightgrey',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: `${props.payload[0].payload.f}`,
       }}
     >
-      {props.payload[0].payload.u}{' '}
-      {moment(props.payload[0].value).format('MM-DD')}
+      <div>{props.payload[0].payload.u}</div>
+      <div>{moment(props.payload[0].value).format('MM-DD')}</div>
     </div>
   );
 };

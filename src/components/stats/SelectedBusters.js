@@ -11,6 +11,7 @@ const DateTooltip = ({ buster, width }) => {
     width > 600 && (
       <div
         style={{
+          position: 'absolute',
           backgroundColor: `${buster.fill}`,
           top: `${element.offsetTop + extraTopOffset}px`,
           left: `${element.offsetLeft}px`,

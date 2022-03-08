@@ -16,6 +16,7 @@ export const createScatterData = busters => {
         x: d,
         y: getY(b.datesWon, d),
         u: b.username,
+        f: b.fill,
       }))
       .filter(i => i.y !== 0);
   });
