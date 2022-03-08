@@ -127,9 +127,13 @@
   margin: 0 0 1rem 0;
 }
 
+.buster_list_busters {
+  min-height: 27.2px;
+}
+
 .buster_list_stats {
   background-color: #18191c;
-  padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+  padding: 0.35rem 0.35rem 0.35rem 0.35rem;
   border-radius: 14px;
 }
 

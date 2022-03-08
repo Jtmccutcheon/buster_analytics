@@ -55,7 +55,7 @@ export const BusterList = ({
               className={
                 userSelectedBusters.find(q => q.id === b.id)
                   ? 'buster_list_stats'
-                  : ''
+                  : 'buster_list_busters'
               }
             >
               {b.username}
