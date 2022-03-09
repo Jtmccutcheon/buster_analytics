@@ -149,6 +149,7 @@
   display: flex;
   height: calc(100vh - 80px);
   overflow-x: hidden;
+  height: 100vh;
 }
 
 .stats_collapsed {
@@ -265,6 +266,8 @@
 }
 
 .stats_dates_container {
+  display: grid;
+  grid-template-columns: 45px 45px 45px;
   padding: 1rem;
   position: absolute;
   z-index: 1;
@@ -302,8 +305,11 @@
   flex-wrap: wrap;
 }
 
+.stats_dates_title {
+  grid-column-start: span 3;
+}
+
 .stats_dates {
-  flex-direction: column;
   margin: 0.25rem 0;
 }
 

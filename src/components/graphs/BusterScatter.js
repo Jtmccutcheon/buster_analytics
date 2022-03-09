@@ -47,7 +47,7 @@ export const BusterScatter = ({ busters, data }) => {
             top: 20,
             right: 20,
             bottom: 20,
-            left: 20,
+            left: -20,
           }}
         >
           <Tooltip content={<CustomTooltip />} />

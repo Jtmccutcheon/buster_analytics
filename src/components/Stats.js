@@ -66,13 +66,13 @@ export const Stats = () => {
             {new Date().getFullYear()} Season
             {userSelectedBusters.length < 1 && <div>Select a Buster</div>}
           </div>
+          <div className="stats_graph">
+            <BusterScatter data={d} busters={userSelectedBusters} />
+          </div>
           <SelectedBuster
             showMenu={showMenu}
             userSelectedBusters={userSelectedBusters}
           />
-          <div className="stats_graph">
-            <BusterScatter data={d} busters={userSelectedBusters} />
-          </div>
         </div>
       </div>
     </div>

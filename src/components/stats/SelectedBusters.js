@@ -11,15 +11,14 @@ const DateTooltip = ({ buster, width }) => {
     width > 600 && (
       <div
         style={{
-          position: 'absolute',
           backgroundColor: `${buster.fill}`,
           top: `${element.offsetTop + extraTopOffset}px`,
-          left: `${element.offsetLeft}px`,
+          left: `${element.offsetLeft - 25}px`,
           borderBottomColor: `${buster.fill}`,
         }}
         className="stats_dates_container"
       >
-        Dates Won
+        <div className="stats_dates_title">Dates Won</div>
         {buster?.datesWon?.map(d => (
           <div key={d} className="stats_dates">
             {format(new Date(d), 'MM/dd')}
