@@ -253,7 +253,7 @@
 .stats_selected {
   display: flex;
   flex-direction: row;
-  margin: 1rem;
+  margin: 1rem 0;
   max-width: 100px;
 }
 
@@ -270,7 +270,7 @@
   grid-template-columns: 45px 45px 45px;
   padding: 1rem;
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   border-radius: 6px;
   border: solid 15px transparent;
   border-style: solid;
@@ -299,7 +299,7 @@
 }
 
 .busters_array {
-  width: 100%;
+  width: 98%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
