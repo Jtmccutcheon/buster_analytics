@@ -3,9 +3,9 @@ import { useQuery } from 'graphql-hooks';
 import { BUSTERS_BY_YEAR } from '../queries';
 import { createScatterData } from './utils/createScatterData';
 import useWindowSize from '../hooks/useWindowSize';
-import { BusterList } from './stats/BusterList';
-import { ArrowIcon } from './stats/ArrowIcon';
-import { SelectedBuster } from './stats/SelectedBusters';
+import { BusterList } from './season/BusterList';
+import { ArrowIcon } from './season/ArrowIcon';
+import { SelectedBuster } from './season/SelectedBusters';
 import { BusterScatter } from './graphs/BusterScatter';
 
 const initialBusters = [];
