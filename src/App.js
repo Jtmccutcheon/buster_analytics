@@ -3,7 +3,7 @@ import { GraphQLClient, ClientContext } from 'graphql-hooks';
 import memCache from 'graphql-hooks-memcache';
 import { Header } from './components/Header';
 import { Graphs } from './components/Graphs';
-import { Stats } from './components/Stats';
+import { Season } from './components/Season';
 import { History } from './components/History';
 
 import './styles.css';
@@ -20,7 +20,7 @@ export default function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Graphs />} />
-          <Route path="/stats" element={<Stats />} />
+          <Route path="/season" element={<Season />} />
           <Route path="/history" element={<History />} />
         </Routes>
       </ClientContext.Provider>

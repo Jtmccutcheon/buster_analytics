@@ -24,11 +24,12 @@ const busterReducer = (state, action) => {
   }
 };
 
-export const Stats = () => {
+export const Season = () => {
   const year = new Date().getFullYear().toString();
   const { loading, error, data } = useQuery(BUSTERS_BY_YEAR, {
     variables: { year },
   });
+
   const [showMenu, setShowMenu] = useState(true);
   const [userSelectedBusters, dispatchUserSelectedBusters] = useReducer(
     busterReducer,
@@ -40,7 +41,7 @@ export const Stats = () => {
   if (error) return <div>Something Bad Happened</div>;
 
   const toggleMenu = () => setShowMenu(!showMenu);
-  const d = createScatterData(userSelectedBusters);
+  const d = createScatterData(userSelectedBusters, year);
 
   const leftStyles = {
     [!showMenu]: 'left_collapsed',

@@ -44,3 +44,28 @@ export const BUSTERS_BY_YEAR = `
       }
     }
   `;
+
+export const BUSTER_HISTORY = `
+  query bustersHistory($year: String!) {
+    bustersOTY(year: $year) {
+        year
+        busters {
+            id
+            username
+            avatarUrl
+            datesWon
+        }
+    }
+
+    bustersOTM(year: $year) {
+      year
+      month
+      busters {
+        id
+        username
+        avatarUrl
+        datesWon
+      }
+    }
+  }
+`;

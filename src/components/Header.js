@@ -7,7 +7,7 @@ export const Header = () => {
         <Link to="/" className="header_item">
           All Time
         </Link>
-        <Link to="/stats" className="header_item">
+        <Link to="/season" className="header_item">
           Season
         </Link>
         <Link to="/history" className="header_item">
