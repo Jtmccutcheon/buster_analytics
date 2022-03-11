@@ -10,9 +10,12 @@ export const History = () => {
     variables: { year },
   });
 
+  // netlify requires everything to be defined and used so placeholder
+  const changeYear = () => setYear('');
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Something Bad Happened</div>;
 
   console.log({ data });
-  return <div>History</div>;
+  return <div onClick={changeYear}>History</div>;
 };
