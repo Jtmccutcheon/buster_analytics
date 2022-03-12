@@ -27,6 +27,17 @@
   cursor: pointer;
 }
 
+.footer {
+  position: absolute;
+  width: 100%;
+  background-color: #4752c4;
+  color: #fff;
+  height: 5rem;
+  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
 .container {
   margin: 1rem;
 }
@@ -229,14 +240,16 @@
 
 .stats {
   display: flex;
-  overflow-x: hidden;
-  height: calc(100vh);
+  overflow: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 80px);
 }
 
 .stats_collapsed {
   display: flex;
-  overflow-x: hidden;
-  height: calc(100vh);
+  overflow: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 80px);
 }
 
 .left {
@@ -247,8 +260,8 @@
   text-align: left;
   width: 248px;
   z-index: 2;
-  overflow: auto;
-  overflow-x: hidden;
+  height: 100%;
+  overflow-y: auto;
   -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
@@ -288,10 +301,18 @@
 
 .left_arrow {
   cursor: pointer;
-  align-self: center;
   font-size: 25px;
-  text-align: center;
   min-width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left_arrow_container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .season {
@@ -316,11 +337,16 @@
 
 .right {
   width: calc(100% - 248px);
+  overflow: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 80px);
 }
 
 .right_collapsed {
   width: calc(100% - 25px);
-  overflow-x: hidden;
+  overflow: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 80px);
 }
 
 .avatar {
@@ -384,6 +410,39 @@
 
 .stats_dates_container:after {
   border-bottom-color: inherit;
+  border-width: 10px;
+  margin-left: -10px;
+}
+
+.stats_dates_container_right {
+  display: grid;
+  grid-template-columns: 45px 45px 45px;
+  padding: 1rem;
+  position: absolute;
+  z-index: 3;
+  border-radius: 6px;
+  border: solid 15px transparent;
+  border-style: solid;
+  border-width: 1px 0 0 1px;
+  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+.stats_dates_container_right:after,
+.stats_dates_container_right:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.stats_dates_container_right:after {
+  border-top-color: inherit;
   border-width: 10px;
   margin-left: -10px;
 }

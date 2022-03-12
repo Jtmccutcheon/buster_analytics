@@ -7,6 +7,8 @@ export const ArrowIcon = ({ toggleMenu, showMenu }) => (
       showMenu ? 'left_arrow' : ['left_arrow', 'left_arrow_collapsed'].join(' ')
     }
   >
-    {showMenu ? <AiOutlineDoubleLeft /> : <AiOutlineDoubleRight />}
+    <div className="left_arrow_container">
+      {showMenu ? <AiOutlineDoubleLeft /> : <AiOutlineDoubleRight />}
+    </div>
   </div>
 );

@@ -1,20 +1,44 @@
+import React, { useRef, useLayoutEffect, useState } from 'react';
 import format from 'date-fns/format';
 
 export const DateTooltip = ({ buster, width }) => {
-  if (!buster) return null;
-  const element = document.getElementById(buster.id);
-  const extraTopOffset = width > 600 ? 98 : 68;
+  const targetRef = useRef();
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const element = document.getElementById(buster?.id);
+  const target = element?.getBoundingClientRect();
+
+  const pointer = target?.y < 560 ? true : false;
+  const top = target?.top - window.scrollY;
+  useLayoutEffect(() => {
+    if (targetRef.current) {
+      setDimensions({
+        width: targetRef.current.offsetWidth,
+        height: targetRef.current.offsetHeight,
+      });
+    }
+  }, [element]);
   return (
-    buster &&
-    width > 600 && (
+    buster && (
       <div
+        ref={targetRef}
         style={{
           backgroundColor: `${buster.fill}`,
-          top: `${element.offsetTop + extraTopOffset}px`,
-          left: `${element.offsetLeft - 25}px`,
+          top: `${
+            pointer
+              ? top + target?.height + 5
+              : top -
+                target?.height -
+                dimensions.height +
+                element.offsetHeight -
+                11
+          }px`,
+          left: `${element?.offsetLeft - 25}px`,
           borderBottomColor: `${buster.fill}`,
+          borderTopColor: `${buster.fill}`,
         }}
-        className="stats_dates_container"
+        className={
+          pointer ? 'stats_dates_container' : 'stats_dates_container_right'
+        }
       >
         <div className="stats_dates_title">
           {buster.datesWon.length} Date(s) Won
