@@ -9,7 +9,7 @@ import {
 } from 'recharts';
 
 export const BusterRadar = ({ data }) => (
-  <ResponsiveContainer width={'100%'} height={400}>
+  <ResponsiveContainer width={'100%'} height={500}>
     <RadarChart data={data}>
       <PolarGrid />
       <PolarAngleAxis dataKey="username" />

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useQuery } from 'graphql-hooks';
 import { BUSTER_HISTORY } from '../queries';
 
-export const History = () => {
+export const Awards = () => {
   const thisYear = new Date().getFullYear().toString();
   const [year, setYear] = useState(thisYear);
 
@@ -17,5 +17,5 @@ export const History = () => {
   if (error) return <div>Something Bad Happened</div>;
 
   console.log({ data });
-  return <div onClick={changeYear}>History</div>;
+  return <div onClick={changeYear}>Awards</div>;
 };

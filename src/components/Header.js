@@ -10,8 +10,8 @@ export const Header = () => {
         <Link to="/season" className="header_item">
           Season
         </Link>
-        <Link to="/history" className="header_item">
-          History
+        <Link to="/awards" className="header_item">
+          Awards
         </Link>
       </div>
     </div>

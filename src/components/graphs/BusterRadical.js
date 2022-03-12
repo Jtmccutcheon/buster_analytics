@@ -39,10 +39,10 @@ export const BusterRadical = ({ data }) => {
   };
 
   return (
-    <ResponsiveContainer width={'100%'} height={500}>
+    <ResponsiveContainer width={'100%'} height={800}>
       <RadialBarChart
         innerRadius="10%"
-        outerRadius="80%"
+        outerRadius="90%"
         data={data}
         startAngle={180}
         endAngle={0}
