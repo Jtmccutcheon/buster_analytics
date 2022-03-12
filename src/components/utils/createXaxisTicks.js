@@ -6,8 +6,7 @@ const monthStart = (year, monthIndex) =>
     .startOf('month')
     .format('YYYY-MM-DD');
 
-export const createXaxisTicks = props => {
-  console.log({ props });
+export const createXaxisTicks = () => {
   const date = new Date();
   const year = date.getFullYear();
   let month = date.getMonth();

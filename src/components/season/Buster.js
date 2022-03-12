@@ -21,7 +21,7 @@ export const Buster = ({ buster, setHoveredBuster, width }) => {
           </div>
         </div>
       </div>
-      <BusterSymbol buster />
+      <BusterSymbol buster={buster} />
     </div>
   );
 };
