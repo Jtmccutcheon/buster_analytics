@@ -35,63 +35,65 @@ const ticks = createXaxisTicks();
 export const BusterScatter = ({ busters, data }) => {
   return (
     busters.length > 0 && (
-      <ResponsiveContainer
-        style={{ display: 'flex', justifySelf: 'flex-end' }}
-        width={'100%'}
-        height={400}
-      >
-        <ScatterChart
-          width={900}
+      <div className="stats_graph">
+        <ResponsiveContainer
+          style={{ display: 'flex', justifySelf: 'flex-end' }}
+          width={'100%'}
           height={400}
-          margin={{
-            top: 20,
-            right: 20,
-            bottom: 20,
-            left: -20,
-          }}
         >
-          <Tooltip content={<CustomTooltip />} />
-          <CartesianGrid />
-          <XAxis
-            scale={'point'}
-            interval={0}
-            tickFormatter={xFormat}
-            tickCount={new Date().getMonth() + 1}
-            ticks={ticks}
-            allowDuplicatedCategory={false}
-            allowDataOverflow={true}
-            dataKey="x"
-            type={'category'}
-          ></XAxis>
-          <YAxis
-            domain={[0, 'auto']}
-            allowDecimals={false}
-            allowDataOverflow={true}
-            type="number"
-            dataKey="y"
-            name="wins"
-          />
-          <ZAxis type="number" range={[100, 600]} />
-          <Scatter
-            name="wins"
-            data={data.defaultData}
-            fill={'none'}
-            line
-          ></Scatter>
-          {busters.map((b, index) => {
-            return (
-              <Scatter
-                key={b.id}
-                name="wins"
-                data={data.busterData[index]}
-                fill={b.fill}
-                shape={b.shape}
-                line
-              ></Scatter>
-            );
-          })}
-        </ScatterChart>
-      </ResponsiveContainer>
+          <ScatterChart
+            width={900}
+            height={400}
+            margin={{
+              top: 20,
+              right: 20,
+              bottom: 20,
+              left: -20,
+            }}
+          >
+            <Tooltip content={<CustomTooltip />} />
+            <CartesianGrid />
+            <XAxis
+              scale={'point'}
+              interval={0}
+              tickFormatter={xFormat}
+              tickCount={new Date().getMonth() + 1}
+              ticks={ticks}
+              allowDuplicatedCategory={false}
+              allowDataOverflow={true}
+              dataKey="x"
+              type={'category'}
+            ></XAxis>
+            <YAxis
+              domain={[0, 'auto']}
+              allowDecimals={false}
+              allowDataOverflow={true}
+              type="number"
+              dataKey="y"
+              name="wins"
+            />
+            <ZAxis type="number" range={[100, 600]} />
+            <Scatter
+              name="wins"
+              data={data.defaultData}
+              fill={'none'}
+              line
+            ></Scatter>
+            {busters.map((b, index) => {
+              return (
+                <Scatter
+                  key={b.id}
+                  name="wins"
+                  data={data.busterData[index]}
+                  fill={b.fill}
+                  shape={b.shape}
+                  line
+                ></Scatter>
+              );
+            })}
+          </ScatterChart>
+        </ResponsiveContainer>
+      </div>
     )
   );
 };

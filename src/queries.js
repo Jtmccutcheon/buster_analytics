@@ -1,3 +1,11 @@
+export const BUSTER_QUERY = `query {
+  busters {
+    id
+    username
+    avatarUrl
+  }
+}`;
+
 export const DEFAULT_QUERY = `query {
     busters {
       id

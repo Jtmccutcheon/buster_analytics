@@ -1,5 +1,8 @@
-import { getColor } from '../utils/getDarkerColor';
+import { getColor } from '../utils/getDarkerPastelColor';
 import { shapes } from '../utils/shapes';
+import { ArrowIcon } from './ArrowIcon';
+import { SelectAndClear } from './SelectAndClear';
+import { BusterListItem } from './BusterListItem';
 
 export const BusterList = ({
   showMenu,
@@ -7,6 +10,7 @@ export const BusterList = ({
   dispatchUserSelectedBusters,
   userSelectedBusters,
   width,
+  toggleMenu,
 }) => {
   const toggleBuster = (buster, index) =>
     dispatchUserSelectedBusters({
@@ -34,35 +38,30 @@ export const BusterList = ({
     );
   };
 
+  const leftStyles = {
+    [!showMenu]: 'left_collapsed',
+    [showMenu]: 'left',
+    [showMenu && width < 600]: ['left', 'left_mobile'].join(' '),
+  }.true;
+
   return (
-    showMenu && (
+    <div className={leftStyles}>
       <div className={width > 600 ? 'left_busters' : 'left_busters_mobile'}>
-        <div className="list_buttons">
-          <button className="list_button" onClick={selectAll}>
-            select all
-          </button>
-          <button className="list_button" onClick={clearBusters}>
-            clear
-          </button>
-        </div>
-        {data.bustersByYear.map((b, index) => (
-          <div
-            key={b.id}
-            className="stats_busters"
-            onClick={() => toggleBuster(b, index)}
-          >
-            <div
-              className={
-                userSelectedBusters.find(q => q.id === b.id)
-                  ? 'buster_list_stats'
-                  : 'buster_list_busters'
-              }
-            >
-              {b.username}
-            </div>
+        {showMenu && (
+          <div>
+            <SelectAndClear clearBusters={clearBusters} selectAll={selectAll} />
+            {data.bustersByYear.map((b, index) => (
+              <BusterListItem
+                buster={b}
+                toggleBuster={toggleBuster}
+                index={index}
+                userSelectedBusters={userSelectedBusters}
+              />
+            ))}
           </div>
-        ))}
+        )}
       </div>
-    )
+      <ArrowIcon toggleMenu={toggleMenu} showMenu={showMenu} />
+    </div>
   );
 };

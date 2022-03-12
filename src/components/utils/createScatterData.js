@@ -1,5 +1,4 @@
 import moment from 'moment';
-// import { getMonthNumber } from './getMonthNumber';
 import { createScatterXaxis } from './createScatterXaxis';
 
 export const createScatterData = busters => {

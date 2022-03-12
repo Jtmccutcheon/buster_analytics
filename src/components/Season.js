@@ -1,28 +1,15 @@
 import { useState, useReducer } from 'react';
 import { useQuery } from 'graphql-hooks';
 import { BUSTERS_BY_YEAR } from '../queries';
+import { initialBusters, seasonBusters } from '../reducers/seasonBusters';
 import { createScatterData } from './utils/createScatterData';
 import useWindowSize from '../hooks/useWindowSize';
+import { Loading } from './common/Loading';
+import { Error } from './common/Error';
 import { BusterList } from './season/BusterList';
-import { ArrowIcon } from './season/ArrowIcon';
+import { SeasonTitle } from './season/SeasonTitle';
 import { SelectedBuster } from './season/SelectedBusters';
 import { BusterScatter } from './graphs/BusterScatter';
-
-const initialBusters = [];
-// this has different logic than the other reducer grom Graphs cannot be shared
-const busterReducer = (state, action) => {
-  switch (action.type) {
-    case 'TOGGLE_BUSTER':
-      return state.find(b => b.id === action.payload.id)
-        ? state.filter(b => b.id !== action.payload.id)
-        : [...state, action.payload];
-
-    case 'RESET':
-      return initialBusters;
-    default:
-      throw new Error();
-  }
-};
 
 export const Season = () => {
   const year = new Date().getFullYear().toString();
@@ -32,44 +19,30 @@ export const Season = () => {
 
   const [showMenu, setShowMenu] = useState(true);
   const [userSelectedBusters, dispatchUserSelectedBusters] = useReducer(
-    busterReducer,
+    seasonBusters,
     initialBusters,
   );
   const { width } = useWindowSize();
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Something Bad Happened</div>;
-
   const toggleMenu = () => setShowMenu(!showMenu);
-  const d = createScatterData(userSelectedBusters, year);
+  const d = createScatterData(userSelectedBusters);
 
-  const leftStyles = {
-    [!showMenu]: 'left_collapsed',
-    [showMenu]: 'left',
-    [showMenu && width < 600]: ['left', 'left_mobile'].join(' '),
-  }.true;
+  if (loading) return <Loading />;
+  if (error) return <Error />;
 
   return (
     <div>
       <div className={showMenu ? 'stats' : 'stats_collapsed'}>
-        <div className={leftStyles}>
-          <BusterList
-            showMenu={showMenu}
-            width={width}
-            data={data}
-            dispatchUserSelectedBusters={dispatchUserSelectedBusters}
-            userSelectedBusters={userSelectedBusters}
-          />
-          <ArrowIcon toggleMenu={toggleMenu} showMenu={showMenu} />
-        </div>
+        <BusterList
+          showMenu={showMenu}
+          toggleMenu={toggleMenu}
+          width={width}
+          data={data}
+          dispatchUserSelectedBusters={dispatchUserSelectedBusters}
+          userSelectedBusters={userSelectedBusters}
+        />
         <div className={showMenu ? 'right' : 'right_collapsed'}>
-          <div className={'season'}>
-            {new Date().getFullYear()} Season
-            {userSelectedBusters.length < 1 && <div>Select a Buster</div>}
-          </div>
-          <div className="stats_graph">
-            <BusterScatter data={d} busters={userSelectedBusters} />
-          </div>
+          <SeasonTitle busters={userSelectedBusters} />
+          <BusterScatter data={d} busters={userSelectedBusters} />
           <SelectedBuster
             showMenu={showMenu}
             userSelectedBusters={userSelectedBusters}
