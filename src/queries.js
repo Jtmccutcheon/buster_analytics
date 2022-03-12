@@ -45,7 +45,7 @@ export const BUSTERS_BY_YEAR = `
     }
   `;
 
-export const BUSTER_HISTORY = `
+export const BUSTER_AWARDS = `
   query bustersHistory($year: String!) {
     bustersOTY(year: $year) {
         year

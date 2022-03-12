@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useQuery } from 'graphql-hooks';
-import { BUSTER_HISTORY } from '../queries';
+import { BUSTER_AWARDS } from '../queries';
 
 export const Awards = () => {
   const thisYear = new Date().getFullYear().toString();
   const [year, setYear] = useState(thisYear);
 
-  const { loading, error, data } = useQuery(BUSTER_HISTORY, {
+  const { loading, error, data } = useQuery(BUSTER_AWARDS, {
     variables: { year },
   });
 
