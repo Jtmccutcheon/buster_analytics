@@ -7,7 +7,7 @@ export const DateTooltip = ({ buster, width }) => {
   const element = document.getElementById(buster?.id);
   const target = element?.getBoundingClientRect();
 
-  const pointer = target?.y < 560 ? true : false;
+  const verticalValue = target?.y < 560 ? true : false;
   const top = target?.top - window.scrollY;
   useLayoutEffect(() => {
     if (targetRef.current) {
@@ -24,7 +24,7 @@ export const DateTooltip = ({ buster, width }) => {
         style={{
           backgroundColor: `${buster.fill}`,
           top: `${
-            pointer
+            verticalValue
               ? top + target?.height + 5
               : top -
                 target?.height -
@@ -37,7 +37,9 @@ export const DateTooltip = ({ buster, width }) => {
           borderTopColor: `${buster.fill}`,
         }}
         className={
-          pointer ? 'stats_dates_container' : 'stats_dates_container_right'
+          verticalValue
+            ? 'stats_dates_container_below'
+            : 'stats_dates_container_above'
         }
       >
         <div className="stats_dates_title">
