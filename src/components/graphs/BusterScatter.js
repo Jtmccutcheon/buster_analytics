@@ -3,7 +3,7 @@ import {
   Scatter,
   XAxis,
   YAxis,
-  ZAxis,
+  // ZAxis,
   CartesianGrid,
   ResponsiveContainer,
   Tooltip,
