@@ -1,13 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useQuery } from 'graphql-hooks';
-import { IoChevronUpOutline, IoChevronDownOutline } from 'react-icons/io5';
-
-const BUSTER_QUERY = `query {
-  busters {
-    username
-    avatarUrl
-  }
-}`;
+import { BUSTER_QUERY } from '../queries';
+import { Loading } from './common/Loading';
+import { Error } from './common/Error';
+import { ShowBustersButton } from './BusterSelect/ShowBustersButton';
+import { BusterSelectList } from './BusterSelect/BusterSelectList';
 
 export const BusterSelect = ({
   dispatchUserSelectedBusters,
@@ -20,12 +17,17 @@ export const BusterSelect = ({
   const dropdownRef = useRef(null);
 
   const onClear = () => dispatchUserSelectedBusters({ type: 'RESET' });
+  const toggleBuster = username =>
+    dispatchUserSelectedBusters({
+      type: 'TOGGLE_BUSTER',
+      payload: username,
+    });
 
   useEffect(() => {
     const handleOutsideClick = e => {
       if (dropdownRef.current !== null) {
         if (dropdownRef.current.contains(e.target)) {
-          return;
+          return null;
         } else {
           setShowBusters(!showBusters);
         }
@@ -39,53 +41,23 @@ export const BusterSelect = ({
     };
   }, [showBusters]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Something Bad Happened</div>;
+  if (loading) return <Loading />;
+  if (error) return <Error />;
 
   return (
     <div className="buster_select_container">
-      <div className="buster_select_container">
-        <div
-          onClick={() => setShowBusters(!showBusters)}
-          className="show_busters_button"
-        >
-          show busters
-          <div className="icon_container">
-            {showBusters ? <IoChevronUpOutline /> : <IoChevronDownOutline />}
-          </div>
-        </div>
-      </div>
-      {showBusters && (
-        <div ref={dropdownRef} className="buster_select_menu">
-          {data.busters.map(
-            (b, index) =>
-              b && (
-                <div
-                  key={index}
-                  className="buster_list"
-                  onClick={() =>
-                    dispatchUserSelectedBusters({
-                      type: 'TOGGLE_BUSTER',
-                      payload: b.username,
-                    })
-                  }
-                >
-                  <input
-                    checked={userSelectedBusters.includes(b.username)}
-                    type={'checkbox'}
-                    value={b.username}
-                  ></input>
-                  {b.username}
-                </div>
-              ),
-          )}
-          <div className="button_container">
-            <button className="view_button" onClick={onClear}>
-              View All
-            </button>
-          </div>
-        </div>
-      )}
+      <ShowBustersButton
+        showBusters={showBusters}
+        setShowBusters={setShowBusters}
+      />
+      <BusterSelectList
+        showBusters={showBusters}
+        dropdownRef={dropdownRef}
+        userSelectedBusters={userSelectedBusters}
+        busters={data.busters}
+        toggleBuster={toggleBuster}
+        onClear={onClear}
+      />
     </div>
   );
 };

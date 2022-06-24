@@ -1,4 +1,4 @@
-import { getColor } from './getColor';
+import { getColor } from './getPastelColor';
 
 export const formattedData = data => {
   const busters =

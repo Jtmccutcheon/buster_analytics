@@ -1,5 +1,14 @@
+export const BUSTER_QUERY = `query {
+  busters {
+    id
+    username
+    avatarUrl
+  }
+}`;
+
 export const DEFAULT_QUERY = `query {
     busters {
+      id
       username
       datesWon
       avatarUrl
@@ -32,3 +41,39 @@ export const BUSTERS_WITHIN = `
       }
     }
   `;
+
+export const BUSTERS_BY_YEAR = `
+    query bustersByYear($year: String!) {
+      bustersByYear(year: $year) {
+        id
+        username
+        datesWon
+        avatarUrl
+      }
+    }
+  `;
+
+export const BUSTER_AWARDS = `
+  query bustersHistory($year: String!) {
+    bustersOTY(year: $year) {
+        year
+        busters {
+            id
+            username
+            avatarUrl
+            datesWon
+        }
+    }
+
+    bustersOTM(year: $year) {
+      year
+      month
+      busters {
+        id
+        username
+        avatarUrl
+        datesWon
+      }
+    }
+  }
+`;
