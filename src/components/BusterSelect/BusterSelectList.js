@@ -13,6 +13,7 @@ export const BusterSelectList = ({
     <div ref={dropdownRef} className="buster_select_menu">
       {busters.map(b => (
         <BusterSelectListItem
+          key={b.id}
           buster={b}
           toggleBuster={toggleBuster}
           userSelectedBusters={userSelectedBusters}

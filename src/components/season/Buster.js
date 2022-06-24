@@ -12,8 +12,12 @@ export const Buster = ({ buster, setHoveredBuster, width }) => {
           className={width > 600 ? 'avatar' : 'small_avatar'}
           src={buster.avatarUrl}
           alt="discord_ava"
-          onMouseEnter={() => setHoveredBuster(buster)}
-          onMouseLeave={() => setHoveredBuster(null)}
+          onMouseEnter={
+            setHoveredBuster ? () => setHoveredBuster(buster) : () => {}
+          }
+          onMouseLeave={
+            setHoveredBuster ? () => setHoveredBuster(null) : () => {}
+          }
         ></img>
         <div className="stats_selected_buster">
           <div className="stats_selected_buster_username">

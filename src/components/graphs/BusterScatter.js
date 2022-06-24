@@ -72,7 +72,7 @@ export const BusterScatter = ({ busters, data }) => {
               dataKey="y"
               name="wins"
             />
-            <ZAxis type="number" range={[100, 600]} />
+            {/* <ZAxis type="number" range={[100, 600]} /> */}
             <Scatter
               name="wins"
               data={data.defaultData}
