@@ -10,7 +10,7 @@ import './styles.css';
 
 export default function App() {
   const client = new GraphQLClient({
-    url: 'https://busterq.herokuapp.com/graphql',
+    url: 'https://busterq.onrender.com/graphql',
     cache: memCache(),
   });
 
