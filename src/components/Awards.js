@@ -12,7 +12,7 @@ export const Awards = () => {
     variables: { year },
   });
 
-  const years = ['2021', '2022'];
+  const years = ['2021', '2022', '2023'];
 
   const changeYear = e => setYear(e.target.value);
 
