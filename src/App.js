@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { Graphs } from './components/Graphs';
 import { Season } from './components/Season';
 import { Awards } from './components/Awards';
+import { DryBusters } from './components/DryBusters';
 
 import './styles.css';
 
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/" element={<Graphs />} />
           <Route path="/season" element={<Season />} />
           <Route path="/awards" element={<Awards />} />
+          <Route path="/dry" element={<DryBusters />} />
         </Routes>
       </ClientContext.Provider>
     </div>

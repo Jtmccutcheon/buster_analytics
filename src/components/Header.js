@@ -13,6 +13,9 @@ export const Header = () => {
         <Link to="/awards" className="header_item">
           Awards
         </Link>
+        <Link to="/dry" className="header_item">
+          Dry Streaks
+        </Link>
       </div>
     </div>
   );
