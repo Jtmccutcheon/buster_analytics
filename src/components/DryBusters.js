@@ -11,6 +11,7 @@ export const DryBusters = () => {
   if (error) return <Error />;
   return (
     <div className="dry_busters">
+      <div className="dry_title">Days Since Last Bust</div>
       {data.busters.map(b => {
         return (
           <div key={b.username}>
