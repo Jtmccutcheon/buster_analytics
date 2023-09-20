@@ -3,7 +3,6 @@ import {
   Scatter,
   XAxis,
   YAxis,
-  // ZAxis,
   CartesianGrid,
   ResponsiveContainer,
   Tooltip,
@@ -12,6 +11,7 @@ import moment from 'moment';
 import { createXaxisTicks } from '../utils/createXaxisTicks';
 
 const CustomTooltip = props => {
+  console.log({ props });
   if (!props || !props.active) return null;
   return (
     <div
@@ -24,6 +24,7 @@ const CustomTooltip = props => {
       }}
     >
       <div>{props.payload[0].payload.u}</div>
+      <div>{props.payload[0].payload.y}</div>
       <div>{moment(props.payload[0].value).format('MM-DD')}</div>
     </div>
   );
@@ -72,7 +73,6 @@ export const BusterYearScatter = ({ busters, data }) => {
               dataKey="y"
               name="wins"
             />
-            {/* <ZAxis type="number" range={[100, 600]} /> */}
             <Scatter
               name="wins"
               data={data.defaultData}
