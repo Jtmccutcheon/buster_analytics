@@ -525,10 +525,12 @@
 
 .dry_busters {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  align-content: space-evenly;
   margin: 0.5rem;
-  margin-top: 1rem;
   width: 100%;
 }
 
@@ -536,12 +538,12 @@
   margin: 0.5rem;
   color: firebrick;
   display: flex;
-}
-
-.dry_names {
-  color: black;
+  align-items: center;
 }
 
 .dry_title {
+  margin: 1rem;
   align-self: center;
+  font-size: larger;
+  font-weight: bold;
 }
