@@ -1,5 +1,5 @@
 import { useQuery } from 'graphql-hooks';
-import { differenceInDays } from 'date-fns';
+import { differenceInDays, format } from 'date-fns';
 import { DRY_QUERY } from '../queries';
 import { Loading } from './common/Loading';
 import { Error } from './common/Error';
@@ -43,18 +43,22 @@ export const DryBusters = () => {
         </div>
       </div>
       <div>
-        <h1 className="dry_title">Longest Dry Streak</h1>
+        <h1 className="dry_title">Longest Dry Streaks</h1>
         <div className="dry_busters">
           {data.busterLongestDry
             .sort((a, b) => b.diff - a.diff)
             .map(b => {
               return (
-                <div key={b.username}>
+                <div key={b.username} className="dryest_container">
                   <div className="dry_days">
                     <Buster buster={b} width={609} />
                     <div className="dry_longest">
-                      <div className="dry_streak">{b.diff}</div>
-                      <div>{b.d1}</div>-<div>{b.d2}</div>
+                      <div className="dry_streak">
+                        {b.diff}
+                        <span className="dry_title_small"> days between</span>
+                      </div>
+                      <div>{format(new Date(b.d1), 'MM dd yyyy')}</div>-
+                      <div>{format(new Date(b.d2), 'MM dd yyyy')}</div>
                     </div>
                   </div>
                 </div>

@@ -564,3 +564,13 @@
 .wuh {
   margin: 1rem;
 }
+
+.dryest_container {
+  border: 1px solid firebrick;
+  margin: 0.5rem;
+  border-radius: 14px;
+}
+
+.dry_title_small {
+  font-weight: normal;
+}
