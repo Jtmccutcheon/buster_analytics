@@ -1,12 +1,14 @@
-export const BUSTER_QUERY = `query {
-  busters {
-    id
-    username
-    avatarUrl
-  }
+export const BUSTER_QUERY = `#graphql
+  query {
+    busters {
+      id
+      username
+      avatarUrl
+    }
 }`;
 
-export const DEFAULT_QUERY = `query {
+export const DEFAULT_QUERY = `#graphql
+  query {
     busters {
       id
       username
@@ -15,7 +17,7 @@ export const DEFAULT_QUERY = `query {
     }
   }`;
 
-export const BUSTERS_NO_DATES = `
+export const BUSTERS_NO_DATES = `#graphql
     query bustersByUsernames($usernames: [String]!) {
       bustersByUsernames(usernames: $usernames) {
         username
@@ -24,7 +26,7 @@ export const BUSTERS_NO_DATES = `
     }
   `;
 
-export const BUSTERS_SELECTED_WITHIN = `
+export const BUSTERS_SELECTED_WITHIN = `#graphql
     query bustersByUsernamesWithin($usernames: [String]!, $startDate: String!, $endDate: String!) {
       bustersByUsernamesWithin(usernames: $usernames, startDate: $startDate, endDate: $endDate) {
         username
@@ -33,7 +35,7 @@ export const BUSTERS_SELECTED_WITHIN = `
     }
   `;
 
-export const BUSTERS_WITHIN = `
+export const BUSTERS_WITHIN = `#graphql
     query bustersWithin($startDate: String!, $endDate: String!) {
       bustersWithin(startDate: $startDate, endDate: $endDate) {
         username
@@ -42,7 +44,7 @@ export const BUSTERS_WITHIN = `
     }
   `;
 
-export const BUSTERS_BY_YEAR = `
+export const BUSTERS_BY_YEAR = `#graphql
     query bustersByYear($year: String!) {
       bustersByYear(year: $year) {
         id
@@ -53,7 +55,7 @@ export const BUSTERS_BY_YEAR = `
     }
   `;
 
-export const BUSTER_AWARDS = `
+export const BUSTER_AWARDS = `#graphql
   query bustersHistory($year: String!) {
     bustersOTY(year: $year) {
         year
@@ -77,3 +79,22 @@ export const BUSTER_AWARDS = `
     }
   }
 `;
+
+export const DRY_QUERY = `#graphql
+  query {
+    busters {
+      id
+      username
+      datesWon
+      avatarUrl
+    }
+    busterLongestDry {
+      username
+      id
+      discordId
+      avatarUrl
+      d1
+      d2
+      diff
+    }
+  }`;

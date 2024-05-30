@@ -1,27 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery } from 'graphql-hooks';
 import { BUSTER_AWARDS } from '../queries';
 import { Loading } from './common/Loading';
 import { Error } from './common/Error';
+import { getYears } from './utils/getYears';
 
 export const Awards = () => {
   const thisYear = new Date().getFullYear().toString();
   const [year, setYear] = useState(thisYear);
-
   const { loading, error, data } = useQuery(BUSTER_AWARDS, {
     variables: { year },
   });
 
-  const years = ['2021', '2022', '2023'];
-
   const changeYear = e => setYear(e.target.value);
 
+  useEffect(() => {}, [data]);
+  console.log({ data });
   if (loading) return <Loading />;
   if (error) return <Error />;
 
   const fakeTitle = year === '2021' ? '*' : '';
 
-  console.log({ data });
+  const years = getYears(thisYear);
+
   const { bustersOTY, bustersOTM } = data;
   return (
     <div>

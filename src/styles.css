@@ -547,3 +547,32 @@
   font-size: larger;
   font-weight: bold;
 }
+
+.dry_longest {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.dry_streak {
+  text-decoration: underline;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.wuh {
+  margin: 1rem;
+}
+
+.dryest_container {
+  border: 1px solid firebrick;
+  margin: 0.5rem;
+  border-radius: 14px;
+  box-shadow: 3px 3px 5px rgba(178, 34, 34, 0.5);
+  background-color: #fff;
+}
+
+.dry_title_small {
+  font-weight: normal;
+}
