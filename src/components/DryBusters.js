@@ -54,7 +54,7 @@ export const DryBusters = () => {
                     <Buster buster={b} width={609} />
                     <div className="dry_longest">
                       <div className="dry_streak">
-                        {b.diff}
+                        {b.diff.toString().padStart(23)}
                         <span className="dry_title_small"> days between</span>
                       </div>
                       <div>{format(new Date(b.d1), 'MM dd yyyy')}</div>-
