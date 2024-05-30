@@ -136,4 +136,5 @@ a {
 html body {
   min-height: 100%;
   overflow-x: hidden;
+  background-color: #f7f4e9;
 }

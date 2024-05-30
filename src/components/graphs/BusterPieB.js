@@ -84,7 +84,7 @@ export const BusterPieB = ({ data }) => {
   );
 
   return (
-    <ResponsiveContainer height={900}>
+    <ResponsiveContainer height={1200}>
       <PieChart>
         <Legend layout="vertical" align="center" verticalAlign="bottom" />
         <Pie
