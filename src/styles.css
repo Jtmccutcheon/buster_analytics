@@ -569,6 +569,8 @@
   border: 1px solid firebrick;
   margin: 0.5rem;
   border-radius: 14px;
+  box-shadow: 3px 3px 5px rgba(178, 34, 34, 0.5);
+  background-color: #fff;
 }
 
 .dry_title_small {
